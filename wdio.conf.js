@@ -55,7 +55,7 @@ exports.config = {
         "platformName": "Android",
         "appium:deviceName": "D6BMDIMBIVONVW7X-rDwUSf",
         "appium:platformVersion": "14",
-        "appium:app": "C:\\Users\\DELL\\Downloads\\ApiDemo.apk",
+        "appium:app": "C:\\Users\\DELL\\Downloads\\mda-2.2.0-25.apk",
         "appium:automationName": "UiAutomator2",
         "appium:ignoreHiddenApiPolicyError": "true",
         "appium:noReset": "true"

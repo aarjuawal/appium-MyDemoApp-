@@ -8,16 +8,20 @@ class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
+
+    get loginMenu(){
+        return $('//androidx.recyclerview.widget.RecyclerView[@content-desc="Recycler view for menu"]/android.view.ViewGroup[11]');
+    }
     get inputUsername () {
-        return $('#username');
+        return $('id:com.saucelabs.mydemoapp.android:id/nameET');
     }
 
     get inputPassword () {
-        return $('#password');
+        return $('id:com.saucelabs.mydemoapp.android:id/passwordET');
     }
 
     get btnSubmit () {
-        return $('button[type="submit"]');
+        return $('~Tap to login with given credentials');
     }
 
     /**
@@ -25,6 +29,7 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     async login (username, password) {
+        await this.loginMenu.click();
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
