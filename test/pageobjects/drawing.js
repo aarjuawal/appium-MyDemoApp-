@@ -1,28 +1,20 @@
 const { $ } = require('@wdio/globals');
 const Page = require('./page');
-
 class DrawingPage {
     get drawingCanvas() {
         return $('//android.widget.TextView[@resource-id="com.saucelabs.mydemoapp.android:id/itemTV" and @text="Drawing"]');
     }
-    get clearDrawing(){
-        return $('id:com.saucelabs.mydemoapp.android:id/clearBtn');
-    }
-
     async clickDrawing() {
         await this.drawingCanvas.click();
     }
-
     async drawRectangle() {
         // Get screen size to ensure correct placement
         const { width, height } = await browser.getWindowRect();
-
         // Set relative coordinates for rectangle drawing
         const startX = Math.round(width * 0.3);  // 30% from left
         const startY = Math.round(height * 0.4); // 40% from top
         const endX = Math.round(width * 0.7);    // 70% from left
         const endY = Math.round(height * 0.7);   // 70% from top
-
         // Perform touch actions to draw a rectangle
         await browser.performActions([
             {
@@ -41,14 +33,5 @@ class DrawingPage {
             }
         ]);
     }
-    // async drawcircle() {
-    //     // Get screen size to ensure correct placement
-    //     const { width, height } = await browser.getWindowRect();
-    // }
-    async clickClear(){
-        await this.clearDrawing.click();
-    }
-
 }
-
 module.exports = new DrawingPage();
