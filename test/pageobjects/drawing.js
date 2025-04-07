@@ -33,5 +33,11 @@ class DrawingPage {
             }
         ]);
     }
+    get clear () {
+        return $('id:com.saucelabs.mydemoapp.android:id/clearBtn');
+    }
+    async clickClear() {
+        await this.clear.click();
+    }
 }
 module.exports = new DrawingPage();

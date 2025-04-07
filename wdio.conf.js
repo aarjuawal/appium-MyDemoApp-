@@ -51,15 +51,16 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local Appium web tests on an Android Emulator
         "platformName": "Android",
         "appium:deviceName": "D6BMDIMBIVONVW7X-rDwUSf",
-        "appium:platformVersion": "14",
+        "appium:platformVersion": "12",
         "appium:app": "C:\\Users\\DELL\\Downloads\\mda-2.2.0-25.apk",
         "appium:automationName": "UiAutomator2",
         "appium:ignoreHiddenApiPolicyError": "true",
-        "appium:noReset": "true"
+        "appium:noReset": "true",
+      
     }],
+  
 
     //
     // ===================
