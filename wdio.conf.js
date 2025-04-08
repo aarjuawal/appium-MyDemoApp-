@@ -21,9 +21,12 @@ exports.config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
+    // specs: [
+    //     './test/specs/**/*.js'
+    // ],
     specs: [
-        './test/specs/**/*.js'
-    ],
+        './test/feature/**/*.feature',
+      ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -50,10 +53,17 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
+  
+        framework: 'cucumber',
+        require: ['./test/step-definitions/*.js'],
+        cucumberOpts: {
+          require: ['./test/steps/**/*.js'], // your step definitions
+          timeout: 60000,
+        },
     capabilities: [{
         "platformName": "Android",
         "appium:deviceName": "D6BMDIMBIVONVW7X-rDwUSf",
-        "appium:platformVersion": "12",
+        "appium:platformVersion": "14",
         "appium:app": "C:\\Users\\DELL\\Downloads\\mda-2.2.0-25.apk",
         "appium:automationName": "UiAutomator2",
         "appium:ignoreHiddenApiPolicyError": "true",
@@ -117,7 +127,7 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'mocha',
+    // framework: 'mocha',
     
     //
     // The number of times to retry the entire specfile when it fails as a whole

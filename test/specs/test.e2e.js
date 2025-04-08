@@ -7,9 +7,9 @@ const Sort = require('../pageobjects/sort_by');
 const drawing = require("../pageobjects/drawing");
 
 describe('API Demos', () => {
-    before(async () => {
-        await browser.startRecordingScreen();
-    });
+    // before(async () => {
+    //     await browser.startRecordingScreen();
+    // });
   
 
     it('should perform login and navigate', async () => {
@@ -18,23 +18,32 @@ describe('API Demos', () => {
         const catalogTitle = await $('id:com.saucelabs.mydemoapp.android:id/productTV');
         await expect(catalogTitle).toBeDisplayed();
         await catalog.clickMenu();
-        await Webview.click_webview("https://www.google.com"); 
+        // await Webview.click_webview("https://www.google.com"); 
+        await Webview.click_webview("WebView");
+        const webviewHeader = await $('android.widget.TextView');
+        await expect(webviewHeader).toBeDisplayed();
     
     });
 
     it('should click drawing and draw a rectangle', async () => {
         await catalog.clickMenu();
         await Drawing.clickDrawing();
+
         await Drawing.drawRectangle();
         const isClearButtonVisible = await drawing.clear.isDisplayed();
         expect(isClearButtonVisible).toBe(true);
         await drawing.clickClear();
     });
 
-    it('should add product to cart', async () => {
+    it.only('should add product to cart', async () => {
         await catalog.clickMenu();
         await catalog.clickCatalog();
+
         await Product.click_product();
+
+        const productTitle = await $('id:com.saucelabs.mydemoapp.android:id/productTV');
+        await expect(productTitle).toBeDisplayed();
+
         await Product.click_add_to_cart();
         await Product.click_my_cart();
         const cartItemCount = await Product.getCartItemCount(); 
@@ -51,11 +60,11 @@ describe('API Demos', () => {
         await Sort.sorting();
     });
 
-    after(async () => {
-        const video = await browser.stopRecordingScreen();
-        const fs = require("fs");
-        fs.writeFileSync("recording.mp4", Buffer.from(video, "base64"));
-        await browser.deleteSession();
-    });
+    // after(async () => {
+    //     const video = await browser.stopRecordingScreen();
+    //     const fs = require("fs");
+    //     fs.writeFileSync("recording.mp4", Buffer.from(video, "base64"));
+    //     await browser.deleteSession();
+    // });
    
 });

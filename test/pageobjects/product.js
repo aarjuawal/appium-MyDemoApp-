@@ -128,6 +128,12 @@ class Product extends Page {
         await this.continue_shopping_button.click();
         
     }
+    async getCartItemCount() {
+        const cartItem = await $('id:com.saucelabs.mydemoapp.android:id/cartTV');
+        const cartText = await cartItem.getText(); // e.g., "1 Product"
+        const match = cartText.match(/\d+/);
+        return match ? parseInt(match[0]) : 0;
+    }
 }
 
 module.exports = new Product();
